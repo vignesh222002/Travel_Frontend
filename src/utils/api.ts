@@ -18,7 +18,9 @@ const fetch = async ({
 }: FetchProps) => {
 
     try {
-        let url = process.env.BASE_URL + endPoint;
+        const base_url = process.env.NEXT_PUBLIC_BASE_URL;
+
+        let url = base_url + endPoint;
 
         if (params) {
             params = queryString.stringify(params)

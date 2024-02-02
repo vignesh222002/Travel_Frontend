@@ -7,7 +7,7 @@ export async function fetchPlaces() {
             method: 'GET',
         })
 
-        return response?.data;
+        return response?.data?.data;
     }
     catch (error) {
         console.log("Error", error)
