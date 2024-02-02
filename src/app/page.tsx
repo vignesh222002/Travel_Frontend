@@ -1,5 +1,15 @@
+"use client"
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
+
 export default function Home() {
+  const router = useRouter();
+  
+  useEffect(() => {
+    router.push('/home')
+  }, [])
+
   return (
-    <h1>Heading</h1>
+    <h1>Travel Planner</h1>
   );
 }
