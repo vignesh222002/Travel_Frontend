@@ -6,5 +6,13 @@ export default interface PlacesCardProps {
     is_visited: boolean,
     is_oneday_trip: boolean,
     stay_option: string,
-    best_time_to_visit: string
+    description: string | null,
+    best_time_to_visit: string,
+    image_link: string | null,
+    nearest_place_ref: {
+        nearest_place: string,
+    },
+    state: {
+        state: string
+    }
 }

@@ -1,0 +1,63 @@
+.cardOutline {
+    box-shadow: 0 6px 6px 0 rgba(0, 0, 0, .12), 0 1px 3px 0 rgba(0, 0, 0, .18);
+    width: 300px;
+    min-height: 200px;
+}
+
+.cardImageWrapper {
+    width: 100%;
+    height: 150px;
+    overflow-y: hidden;
+
+    .cardBackgroungImage {
+        width: 100%;
+        height: 150px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+    }
+
+    .cardImage {
+        width: 100%;
+        height: auto;
+    }
+}
+
+.cardHead {
+    margin: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    .place {
+        flex: 2;
+        margin: 0;
+        text-wrap: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .state {
+        margin: 3px 0 0 0;
+        flex: 1;
+        display: flex;
+        justify-content: right;
+        font-size: 14px;
+        text-wrap: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+}
+
+.landscape {
+    margin: 10px 0;
+}
+
+.placeOptions {
+    font-size: 12px;
+    margin: 5px 0;
+
+    span {
+        font-weight: 600;
+    }
+}
