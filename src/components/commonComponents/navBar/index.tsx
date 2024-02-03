@@ -48,6 +48,7 @@ const NavBar = ({ places, addPlace, manageState, addState }: NavbarComponentProp
                     {addPlace && (
                         <button
                             className={styles.navbarActionButton}
+                            onClick={() => navigateTo(router, '/places/create')}
                         >
                             Add Place
                         </button>
