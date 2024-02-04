@@ -2,18 +2,15 @@
 import React, { useEffect, useRef, useState } from 'react'
 import styles from './styles.module.scss'
 import NavBar from '@/components/commonComponents/navBar'
-import { CreateEditPlaceComponentProps, PlaceData, Options } from './interfaces'
+import { CreateEditPlaceComponentProps, PlaceData, Options, SelectedOption } from './interfaces'
 import { useRouter } from 'next/navigation'
 import { best_time_to_visit_Options, fetchStateOptions, landscapeOptions, placeFieldsChangeHandler } from './helper'
 import Select from 'react-select'
+import { addNewPlace } from './services'
 
 const CreateEditPlaceComponent = ({ purpose }: CreateEditPlaceComponentProps) => {
     const router = useRouter();
-    const [selectedOption, setSelectedOption] = useState<{
-        state: Options,
-        landscape: Options,
-        bestTimeToVisit: Options,
-    }>({
+    const [selectedOption, setSelectedOption] = useState<SelectedOption>({
         state: { label: '', value: 0 },
         landscape: { label: '', value: 0 },
         bestTimeToVisit: { label: '', value: 0 },
@@ -37,14 +34,6 @@ const CreateEditPlaceComponent = ({ purpose }: CreateEditPlaceComponentProps) =>
     useEffect(() => {
         fetchStateOptions(setOptions)
     }, [])
-
-    // useEffect(() => {
-    //     console.log("selectedOption", selectedOption)
-    // }, [selectedOption])
-
-    // useEffect(() => {
-    //     console.log("State", state)
-    // }, [state])
 
     return (
         <>
@@ -220,6 +209,14 @@ const CreateEditPlaceComponent = ({ purpose }: CreateEditPlaceComponentProps) =>
                                 />
                             </div>
                         </div>
+                    </div>
+                    <div className={styles.submitWrapper}>
+                        <button
+                            className={styles.submitPlace}
+                            onClick={() => addNewPlace(state, setState, setSelectedOption)}
+                        >
+                            Create
+                        </button>
                     </div>
                 </div>
             </div>
