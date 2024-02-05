@@ -7,7 +7,7 @@ const AddEditStatePopup = ({ state, setState, purpose, id, refetchSetState }: Ad
     return (
         <div className={styles.addStatePopupWrapper}>
             <div className={styles.addStatePopup}>
-                <div className={styles.addStatePopupHead}>Enter State :</div>
+                <div className={styles.addStatePopupHead}>Add State</div>
                 <input
                     type="text"
                     className={styles.addStatePopupInput}

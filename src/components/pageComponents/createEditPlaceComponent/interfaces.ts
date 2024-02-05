@@ -1,5 +1,6 @@
 export interface CreateEditPlaceComponentProps {
     purpose: 'create' | 'edit',
+    id?: number
 }
 
 export interface PlaceData {

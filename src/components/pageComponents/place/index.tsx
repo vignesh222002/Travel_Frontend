@@ -1,9 +1,9 @@
 "use client"
-import PlacesCardProps from '@/components/pageComponents/place/placesCard/interfaces';
+import PlacesCardProps from '@/components/commonComponents/placesCard/interfaces';
 import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import { getAllPlacesHandler } from './helper';
-import PlacesCard from './placesCard';
+import PlacesCard from '../../commonComponents/placesCard';
 import styles from './styles.module.scss'
 import NavBar from '../../commonComponents/navBar';
 

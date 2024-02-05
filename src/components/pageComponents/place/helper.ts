@@ -1,4 +1,4 @@
-import PlacesCardProps from "./placesCard/interfaces";
+import PlacesCardProps from "../../commonComponents/placesCard/interfaces";
 import { fetchPlaces } from "./services";
 
 export async function getAllPlacesHandler(

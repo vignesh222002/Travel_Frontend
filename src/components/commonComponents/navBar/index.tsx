@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import styles from './styles.module.scss'
 import { useRouter } from 'next/navigation'
-import { navigateTo } from './helper';
 import { NavbarComponentProps } from './interfaces';
 import AddEditStatePopup from '../addStatePopup';
+import { navigateTo } from '@/utils/router';
 
 const NavBar = ({ places, addPlace, manageState, addState }: NavbarComponentProps) => {
     const router = useRouter();

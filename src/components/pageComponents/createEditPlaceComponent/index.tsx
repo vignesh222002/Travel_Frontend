@@ -4,16 +4,16 @@ import styles from './styles.module.scss'
 import NavBar from '@/components/commonComponents/navBar'
 import { CreateEditPlaceComponentProps, PlaceData, Options, SelectedOption } from './interfaces'
 import { useRouter } from 'next/navigation'
-import { best_time_to_visit_Options, fetchStateOptions, landscapeOptions, placeFieldsChangeHandler } from './helper'
+import { best_time_to_visit_Options, fetchStateOptions, getPlaceDetailsForEdit, landscapeOptions, placeFieldsChangeHandler } from './helper'
 import Select from 'react-select'
-import { addNewPlace } from './services'
+import { addNewPlace, updatePlace } from './services'
 
-const CreateEditPlaceComponent = ({ purpose }: CreateEditPlaceComponentProps) => {
+const CreateEditPlaceComponent = ({ purpose, id }: CreateEditPlaceComponentProps) => {
     const router = useRouter();
     const [selectedOption, setSelectedOption] = useState<SelectedOption>({
         state: { label: '', value: 0 },
-        landscape: { label: '', value: 0 },
-        bestTimeToVisit: { label: '', value: 0 },
+        landscape: { label: '', value: '' },
+        bestTimeToVisit: { label: '', value: '' },
     })
     const isVisitedRef = useRef(null);
     const isOneDayTripRef = useRef(null);
@@ -34,6 +34,16 @@ const CreateEditPlaceComponent = ({ purpose }: CreateEditPlaceComponentProps) =>
     useEffect(() => {
         fetchStateOptions(setOptions)
     }, [])
+
+    useEffect(() => {
+        if (id) {
+            getPlaceDetailsForEdit(id, setState, setSelectedOption, Options)
+        }
+    }, [id, Options])
+
+    useEffect(() => {
+        console.log("selectedOption", selectedOption)
+    }, [selectedOption])
 
     return (
         <>
@@ -213,9 +223,16 @@ const CreateEditPlaceComponent = ({ purpose }: CreateEditPlaceComponentProps) =>
                     <div className={styles.submitWrapper}>
                         <button
                             className={styles.submitPlace}
-                            onClick={() => addNewPlace(state, setState, setSelectedOption)}
+                            onClick={() => {
+                                if (purpose === 'create') {
+                                    addNewPlace(state, setState, setSelectedOption)
+                                }
+                                else if (purpose === 'edit' && id) {
+                                    updatePlace(id, state, router)
+                                }
+                            }}
                         >
-                            Create
+                            {purpose === 'create' ? 'Create' : 'Edit'}
                         </button>
                     </div>
                 </div>
