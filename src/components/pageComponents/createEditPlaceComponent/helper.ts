@@ -27,7 +27,7 @@ export const placeFieldsChangeHandler = (setState: React.Dispatch<React.SetState
 
 export const fetchStateOptions = async (setState: React.Dispatch<React.SetStateAction<Options[]>>) => {
     const result: States[] = await fetchAllStates()
-    const options: Options[] = result.map(item => {
+    const options: Options[] = result?.map(item => {
         return {
             label: item.state,
             value: item.id

@@ -8,6 +8,7 @@ import Image from 'next/image';
 import landscapeLogo from '../../../assests/svg/beach_holiday_vacations_sun_tree_sea_landscape_icon_179508.svg'
 import { navigateTo } from '@/utils/router';
 import { useRouter } from 'next/navigation';
+import { deletePlace } from './services';
 
 const PlaceDetailsPageComponent = ({ id }: PlaceDetailsPageComponentProps) => {
     const router = useRouter()
@@ -32,10 +33,6 @@ const PlaceDetailsPageComponent = ({ id }: PlaceDetailsPageComponentProps) => {
     })
 
     useEffect(() => {
-        console.log("Place Data", place)
-    }, [place])
-
-    useEffect(() => {
         getPlaceDetailsHandler(id, setPlace);
     }, [id])
 
@@ -46,34 +43,42 @@ const PlaceDetailsPageComponent = ({ id }: PlaceDetailsPageComponentProps) => {
                 <div className={styles.placeDetailWrapper}>
                     <div className={styles.leftPlaceDetailsWrapper}>
                         <div className={styles.placeHeader}>
-                            <div className={styles.place}>{place.place}</div>
-                            <div className={styles.state}>{place.state.state}</div>
+                            <div className={styles.place}>{place?.place}</div>
+                            <div className={styles.state}>{place?.state.state}</div>
                         </div>
                         <div className={styles.placeDetailsContent}>
                             <div className={styles.landscapeWrapper}>
                                 <Image className={styles.landscapeLogo} src={landscapeLogo} alt='landscape logo' />
-                                <div className={styles.landscape}>{place.landscape}</div>
+                                <div className={styles.landscape}>{place?.landscape}</div>
                             </div>
-                            <div className={styles.isOnedayTrip}>{place.is_oneday_trip ? 'One Day Trip' : 'Many Days Trip'}</div>
+                            <div className={styles.isOnedayTrip}>{place?.is_oneday_trip ? 'One Day Trip' : 'Many Days Trip'}</div>
                             <div
                                 className={styles.isVisited}
-                                style={{ color: place.is_visited ? 'green' : 'red' }}
+                                style={{ color: place?.is_visited ? 'green' : 'red' }}
                             >
-                                {place.is_visited ? 'Already Visited' : 'Not Visited Yet'}
+                                {place?.is_visited ? 'Already Visited' : 'Not Visited Yet'}
                             </div>
-                            <div className={styles.description}><b>Description : </b>{place.description}</div>
-                            <div className={styles.stayOption}><b>Stay : </b>{place.stay_option}</div>
+                            <div className={styles.description}><b>Description : </b>{place?.description}</div>
+                            <div className={styles.stayOption}><b>Stay : </b>{place?.stay_option}</div>
                         </div>
                     </div>
                     <div className={styles.rightPlaceSpotsWrapper}>
                         <div className={styles.spotHeader}>
                             <h3 className={styles.spotHead}>Spots</h3>
-                            <button
-                                className={styles.editPlaceButton}
-                                onClick={() => navigateTo(router, `/places/${id}/edit`)}
-                            >
-                                Edit Place
-                            </button>
+                            <div className={styles.placeActions}>
+                                <button
+                                    className={styles.editPlaceButton}
+                                    onClick={() => navigateTo(router, `/places/${id}/edit`)}
+                                >
+                                    Edit Place
+                                </button>
+                                <button
+                                    className={styles.editPlaceButton}
+                                    onClick={() => deletePlace(id, router)}
+                                >
+                                    Delete Place
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
