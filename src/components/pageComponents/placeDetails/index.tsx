@@ -9,6 +9,7 @@ import landscapeLogo from '../../../assests/svg/beach_holiday_vacations_sun_tree
 import { navigateTo } from '@/utils/router';
 import { useRouter } from 'next/navigation';
 import { deletePlace } from './services';
+import SpotComponent from '@/components/commonComponents/spot';
 
 const PlaceDetailsPageComponent = ({ id }: PlaceDetailsPageComponentProps) => {
     const router = useRouter()
@@ -80,6 +81,9 @@ const PlaceDetailsPageComponent = ({ id }: PlaceDetailsPageComponentProps) => {
                                 </button>
                             </div>
                         </div>
+                        {place?.spots?.map(item => (
+                            <SpotComponent data={item} key={item.id} />
+                        ))}
                     </div>
                 </div>
             </div>

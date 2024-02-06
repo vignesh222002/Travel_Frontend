@@ -59,9 +59,6 @@ export const getPlaceDetailsForEdit = async (
             stay_option: response.stay_option
         })
 
-        console.log("landscape", landscapeOptions, response.landscape)
-        console.log("visit", best_time_to_visit_Options, response.best_time_to_visit)
-
         setSelectedOption({
             state: Options.find(item => item.value === response.state_id) ?? { label: '', value: 0 },
             landscape: landscapeOptions.find(item => item.value === response.landscape) ?? { label: '', value: '' },

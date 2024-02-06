@@ -6,7 +6,8 @@ import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.share
 export const addNewPlace = async (
     body: PlaceData,
     setState: React.Dispatch<React.SetStateAction<PlaceData>>,
-    setSelectedOption: React.Dispatch<React.SetStateAction<SelectedOption>>
+    setSelectedOption: React.Dispatch<React.SetStateAction<SelectedOption>>,
+    router: AppRouterInstance
 ) => {
     try {
         const response = await fetch({
@@ -34,6 +35,8 @@ export const addNewPlace = async (
                 landscape: { label: '', value: 0 },
                 bestTimeToVisit: { label: '', value: 0 },
             })
+
+            navigateTo(router, '/places')
         }
     }
     catch (error) {

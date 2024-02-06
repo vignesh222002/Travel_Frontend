@@ -30,7 +30,7 @@ const ManageStatePageComponent = () => {
                     <>
                         <h3>States :</h3>
                         <div className={styles.stateListContainer}>
-                            {states.map(item => (
+                            {states?.map(item => (
                                 <div className={styles.stateList}>
                                     <span>{item.state}</span>
                                     <button

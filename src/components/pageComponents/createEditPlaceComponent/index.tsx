@@ -41,10 +41,6 @@ const CreateEditPlaceComponent = ({ purpose, id }: CreateEditPlaceComponentProps
         }
     }, [id, Options])
 
-    useEffect(() => {
-        console.log("selectedOption", selectedOption)
-    }, [selectedOption])
-
     return (
         <>
             <NavBar manageState addState places />
@@ -225,7 +221,7 @@ const CreateEditPlaceComponent = ({ purpose, id }: CreateEditPlaceComponentProps
                             className={styles.submitPlace}
                             onClick={() => {
                                 if (purpose === 'create') {
-                                    addNewPlace(state, setState, setSelectedOption)
+                                    addNewPlace(state, setState, setSelectedOption, router)
                                 }
                                 else if (purpose === 'edit' && id) {
                                     updatePlace(id, state, router)

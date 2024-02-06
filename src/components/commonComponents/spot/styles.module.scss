@@ -1,0 +1,107 @@
+.spotWrapper {
+    display: flex;
+    margin: 20px 0;
+    min-height: 180px;
+    color: #2d3e52;
+    background-color: #f5f5f5;
+    box-shadow: 0 6px 6px 0 rgba(0, 0, 0, .12), 0 1px 3px 0 rgba(0, 0, 0, .18);
+    padding: 10px 15px;
+
+    .spotDetails {
+        width: 70%;
+        padding: 10px;
+
+        .spotHeader {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .spotHeadContent {
+                display: flex;
+                justify-content: start;
+                align-items: center;
+                gap: 10px;
+
+                .spot {
+                    font-weight: bold;
+                    font-size: 18px;
+                }
+
+                .mustVisit {
+                    color: green;
+                    font-weight: bold;
+                    font-size: 12px;
+                    margin-top: 4px;
+                }
+            }
+
+            .category {
+                color: #426890;
+                font-weight: bold;
+                margin: 0 30px 0 0;
+            }
+        }
+
+        .spotTimingContainer {
+            margin: 10px 30px 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .season,
+            .timing {
+                font-size: 13px;
+                color: #426890;
+                font-weight: bold;
+
+                b {
+                    font-size: 15px;
+                    margin: 0 10px 0 0;
+                    color: #2d3e52;
+                }
+            }
+        }
+
+        .locationContainer {
+            margin: 15px 0 10px;
+            display: flex;
+            gap: 10px;
+            
+            .location {
+                a {
+                    color: #426890;
+                    text-decoration: none;
+
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+
+        .description {
+
+            b {
+                font-size: 15px;
+                margin: 0 10px 0 0;
+            }
+
+            span {
+                font-size: 13px;
+                color: #426890;
+                font-weight: bold;
+            }
+        }
+    }
+
+    .spotImage {
+        display: flex;
+        align-items: center;
+        width: 30%;
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+}
