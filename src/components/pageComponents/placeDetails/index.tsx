@@ -10,6 +10,7 @@ import { navigateTo } from '@/utils/router';
 import { useRouter } from 'next/navigation';
 import { deletePlace } from './services';
 import SpotComponent from '@/components/commonComponents/spot';
+import AddEditSpot from '@/components/commonComponents/addEditSpotPopup';
 
 const PlaceDetailsPageComponent = ({ id }: PlaceDetailsPageComponentProps) => {
     const router = useRouter()
@@ -32,14 +33,22 @@ const PlaceDetailsPageComponent = ({ id }: PlaceDetailsPageComponentProps) => {
             nearest_place: ''
         }
     })
+    const [addSpotPopup, setAddSpotPopup] = useState(false)
 
     useEffect(() => {
         getPlaceDetailsHandler(id, setPlace);
     }, [id])
 
+    useEffect(() => {
+        console.log("addSpotPopup", addSpotPopup)
+    }, [addSpotPopup])
+
     return (
         <>
             <NavBar addPlace addState manageState places />
+            {addSpotPopup && (
+                <AddEditSpot placeId={id} purpose='create' setPopup={setAddSpotPopup} />
+            )}
             <div className={styles.placeDetailPageWrapper}>
                 <div className={styles.placeDetailWrapper}>
                     <div className={styles.leftPlaceDetailsWrapper}>
@@ -67,6 +76,12 @@ const PlaceDetailsPageComponent = ({ id }: PlaceDetailsPageComponentProps) => {
                         <div className={styles.spotHeader}>
                             <h3 className={styles.spotHead}>Spots</h3>
                             <div className={styles.placeActions}>
+                                <button
+                                    className={styles.editPlaceButton}
+                                    onClick={() => setAddSpotPopup(true)}
+                                >
+                                    Add Spot
+                                </button>
                                 <button
                                     className={styles.editPlaceButton}
                                     onClick={() => navigateTo(router, `/places/${id}/edit`)}

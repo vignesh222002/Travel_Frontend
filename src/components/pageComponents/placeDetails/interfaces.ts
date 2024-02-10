@@ -26,7 +26,7 @@ export interface SpotDetails {
     category: string;
     description: string;
     google_location: string;
-    id: number;
+    id?: number;
     must_visit: boolean;
     image_link: string;
     place_id: number;

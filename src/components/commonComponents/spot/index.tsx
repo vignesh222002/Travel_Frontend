@@ -7,6 +7,7 @@ import locationImage from '../../../assests/svg/locationIcon.svg'
 const SpotComponent = ({ data }: {
     data: SpotDetails
 }) => {
+    
     return (
         <div className={styles.spotWrapper}>
             <div className={styles.spotDetails}>
