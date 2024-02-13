@@ -24,10 +24,10 @@ const SpotComponent = ({ data }: {
                 </div>
                 <div className={styles.locationContainer}>
                     <div className={styles.locationLogo}>
-                        <Image alt='Loaction Icon' src={locationImage} width={20} height={20} />
+                        <Image alt='Location Icon' src={locationImage} width={20} height={20} />
                     </div>
                     <div className={styles.location}>
-                        <a target='_blank' href={data.google_location}>View loaction</a>
+                        <a target='_blank' href={data.google_location}>View location</a>
                     </div>
                 </div>
                 <div className={styles.description}>

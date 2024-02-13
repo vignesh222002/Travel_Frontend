@@ -39,15 +39,11 @@ const PlaceDetailsPageComponent = ({ id }: PlaceDetailsPageComponentProps) => {
         getPlaceDetailsHandler(id, setPlace);
     }, [id])
 
-    useEffect(() => {
-        console.log("addSpotPopup", addSpotPopup)
-    }, [addSpotPopup])
-
     return (
         <>
             <NavBar addPlace addState manageState places />
             {addSpotPopup && (
-                <AddEditSpot placeId={id} purpose='create' setPopup={setAddSpotPopup} />
+                <AddEditSpot placeId={id} purpose='create' setPopup={setAddSpotPopup} setPlace={setPlace} />
             )}
             <div className={styles.placeDetailPageWrapper}>
                 <div className={styles.placeDetailWrapper}>
