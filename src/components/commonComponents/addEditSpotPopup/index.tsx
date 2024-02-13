@@ -175,7 +175,7 @@ const AddEditSpot = ({ purpose, placeId, spotId, setPopup, setPlace }: AddEditSp
                     <button
                         className={styles.submitPlace}
                         onClick={() => {
-                            setPopup(false)
+                            setPopup(false) 
                         }}
                     >
                         Cancel
