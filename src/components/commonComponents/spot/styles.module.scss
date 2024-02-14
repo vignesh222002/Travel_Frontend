@@ -66,7 +66,7 @@
             margin: 15px 0 10px;
             display: flex;
             gap: 10px;
-            
+
             .location {
                 a {
                     color: #426890;
@@ -90,6 +90,28 @@
                 font-size: 13px;
                 color: #426890;
                 font-weight: bold;
+            }
+        }
+
+        .spotActionWrapper {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 15px;
+
+            // .spotActionButton {}
+            button {
+                background-color: #2d3e52;
+                color: #fff;
+                outline: none;
+                border: none;
+                padding: 5px 15px;
+                font-weight: bold;
+                cursor: pointer;
+
+                &:hover {
+                    box-shadow: 0 6px 6px 0 rgba(0, 0, 0, .12), 0 1px 3px 0 rgba(0, 0, 0, .18);
+                }
             }
         }
     }

@@ -2,20 +2,20 @@ import React, { useEffect, useRef, useState } from 'react'
 import styles from './styles.module.scss'
 import { AddEditSpotPopupProps, SpotSelectedOption } from './interfaces';
 import { SpotDetails } from '@/components/pageComponents/placeDetails/interfaces';
-import { addSpotHandler, categoryOptions, seasonOptions, spotFieldsChangeHandler, timingOptions } from './helper';
+import { addSpotHandler, categoryOptions, editSpotHandler, seasonOptions, spotFieldsChangeHandler, timingOptions } from './helper';
 import Select from 'react-select';
 
-const AddEditSpot = ({ purpose, placeId, spotId, setPopup, setPlace }: AddEditSpotPopupProps) => {
+const AddEditSpot = ({ purpose, placeId, editSpotData, setPopup, setPlace }: AddEditSpotPopupProps) => {
     const [state, setState] = useState<SpotDetails>({
-        category: '',
-        description: '',
-        google_location: '',
-        image_link: '',
-        must_visit: false,
+        category: editSpotData.category,
+        description: editSpotData.description,
+        google_location: editSpotData.google_location,
+        image_link: editSpotData.image_link,
+        must_visit: editSpotData.must_visit,
         place_id: placeId,
-        season: '',
-        spot: '',
-        timing: '',
+        season: editSpotData.season,
+        spot: editSpotData.spot,
+        timing: editSpotData.timing,
     })
     const [selectedOption, setSelectedOption] = useState<SpotSelectedOption>({
         category: { label: '', value: '' },
@@ -23,6 +23,16 @@ const AddEditSpot = ({ purpose, placeId, spotId, setPopup, setPlace }: AddEditSp
         season: { label: '', value: '' },
     })
     const mustVisitRef = useRef(null);
+
+    useEffect(() => {
+        if (editSpotData.category && editSpotData.timing && editSpotData.season) {
+            setSelectedOption({
+                category: categoryOptions.find(item => item.value === editSpotData.category) ?? { label: '', value: '' },
+                season: seasonOptions.find(item => item.value === editSpotData.season) ?? { label: '', value: '' },
+                timing: timingOptions.find(item => item.value === editSpotData.timing) ?? { label: '', value: '' }
+            })
+        }
+    }, [editSpotData])
 
     return (
         <div className={styles.addEditSpotPopupWrapper}>
@@ -165,8 +175,8 @@ const AddEditSpot = ({ purpose, placeId, spotId, setPopup, setPlace }: AddEditSp
                             if (purpose === 'create') {
                                 addSpotHandler(state, setPopup, setState, setSelectedOption, placeId, setPlace)
                             }
-                            else if (purpose === 'edit' && spotId) {
-                                // updatePlace(id, state, router)
+                            else if (purpose === 'edit') {
+                                editSpotHandler({ ...state, id: editSpotData.id ?? 0 }, setPopup, setState, setSelectedOption, placeId, setPlace)
                             }
                         }}
                     >
@@ -175,7 +185,7 @@ const AddEditSpot = ({ purpose, placeId, spotId, setPopup, setPlace }: AddEditSp
                     <button
                         className={styles.submitPlace}
                         onClick={() => {
-                            setPopup(false) 
+                            setPopup({ add: false, edit: false })
                         }}
                     >
                         Cancel

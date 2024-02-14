@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import styles from './styles.module.scss'
 import NavBar from '@/components/commonComponents/navBar';
 import { getPlaceDetailsHandler } from './helper';
-import { PlaceDetails, PlaceDetailsPageComponentProps } from './interfaces';
+import { PlaceDetails, PlaceDetailsPageComponentProps, SpotDetails, SpotPopupState } from './interfaces';
 import Image from 'next/image';
 import landscapeLogo from '../../../assests/svg/beach_holiday_vacations_sun_tree_sea_landscape_icon_179508.svg'
 import { navigateTo } from '@/utils/router';
@@ -33,7 +33,22 @@ const PlaceDetailsPageComponent = ({ id }: PlaceDetailsPageComponentProps) => {
             nearest_place: ''
         }
     })
-    const [addSpotPopup, setAddSpotPopup] = useState(false)
+    const [spotPopup, setSpotPopup] = useState<SpotPopupState>({
+        add: false,
+        edit: false,
+    })
+    const [editSpotData, setEditSpotData] = useState<SpotDetails>({
+        category: '',
+        description: '',
+        google_location: '',
+        image_link: '',
+        must_visit: false,
+        place_id: 0,
+        season: '',
+        spot: '',
+        timing: '',
+        id: 0
+    })
 
     useEffect(() => {
         getPlaceDetailsHandler(id, setPlace);
@@ -42,8 +57,10 @@ const PlaceDetailsPageComponent = ({ id }: PlaceDetailsPageComponentProps) => {
     return (
         <>
             <NavBar addPlace addState manageState places />
-            {addSpotPopup && (
-                <AddEditSpot placeId={id} purpose='create' setPopup={setAddSpotPopup} setPlace={setPlace} />
+            {spotPopup.add ? (
+                <AddEditSpot editSpotData={editSpotData} placeId={id} purpose='create' setPopup={setSpotPopup} setPlace={setPlace} />
+            ) : spotPopup.edit && (
+                <AddEditSpot editSpotData={editSpotData} placeId={id} purpose='edit' setPopup={setSpotPopup} setPlace={setPlace} />
             )}
             <div className={styles.placeDetailPageWrapper}>
                 <div className={styles.placeDetailWrapper}>
@@ -74,7 +91,7 @@ const PlaceDetailsPageComponent = ({ id }: PlaceDetailsPageComponentProps) => {
                             <div className={styles.placeActions}>
                                 <button
                                     className={styles.editPlaceButton}
-                                    onClick={() => setAddSpotPopup(true)}
+                                    onClick={() => setSpotPopup(prev => ({ ...prev, add: true }))}
                                 >
                                     Add Spot
                                 </button>
@@ -93,7 +110,7 @@ const PlaceDetailsPageComponent = ({ id }: PlaceDetailsPageComponentProps) => {
                             </div>
                         </div>
                         {place?.spots?.map(item => (
-                            <SpotComponent data={item} key={item.id} />
+                            <SpotComponent data={item} key={item.id} setEditSpotData={setEditSpotData} setPopup={setSpotPopup} />
                         ))}
                     </div>
                 </div>

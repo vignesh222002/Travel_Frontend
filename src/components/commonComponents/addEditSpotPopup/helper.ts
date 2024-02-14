@@ -1,8 +1,8 @@
 
 import { Options } from "@/components/pageComponents/createEditPlaceComponent/interfaces"
-import { PlaceDetails, SpotDetails } from "@/components/pageComponents/placeDetails/interfaces"
-import { addSpot } from "./services"
-import { SpotSelectedOption } from "./interfaces"
+import { PlaceDetails, SpotDetails, SpotPopupState } from "@/components/pageComponents/placeDetails/interfaces"
+import { addSpot, editSpot } from "./services"
+import { EditSpotServiceBody, SpotSelectedOption } from "./interfaces"
 import { getPlaceDetailsHandler } from "@/components/pageComponents/placeDetails/helper"
 
 export const categoryOptions: Options[] = [
@@ -34,7 +34,7 @@ export const spotFieldsChangeHandler = (setState: React.Dispatch<React.SetStateA
 
 export const addSpotHandler = async (
     data: SpotDetails,
-    setPopup: React.Dispatch<React.SetStateAction<boolean>>,
+    setPopup: React.Dispatch<React.SetStateAction<SpotPopupState>>,
     setState: React.Dispatch<React.SetStateAction<SpotDetails>>,
     setSelectedOption: React.Dispatch<React.SetStateAction<SpotSelectedOption>>,
     placeId: number,
@@ -44,7 +44,7 @@ export const addSpotHandler = async (
         const response = await addSpot(data)
 
         if (response) {
-            setPopup(false)
+            setPopup(prev => ({ ...prev, add: false }))
             setSelectedOption({
                 category: { label: '', value: '' },
                 timing: { label: '', value: '' },
@@ -69,35 +69,39 @@ export const addSpotHandler = async (
     }
 }
 
-// export const getPlaceDetailsForEdit = async (
-//     id: number,
-//     setState: React.Dispatch<React.SetStateAction<PlaceData>>,
-//     setSelectedOption: React.Dispatch<React.SetStateAction<SelectedOption>>,
-//     Options: Options[]
-// ) => {
-//     try {
-//         const response: PlaceDetails = await fetchPlaceDetails(id)
+export const editSpotHandler = async (
+    data: EditSpotServiceBody,
+    setPopup: React.Dispatch<React.SetStateAction<SpotPopupState>>,
+    setState: React.Dispatch<React.SetStateAction<SpotDetails>>,
+    setSelectedOption: React.Dispatch<React.SetStateAction<SpotSelectedOption>>,
+    placeId: number,
+    setPlace: React.Dispatch<React.SetStateAction<PlaceDetails>>,
+) => {
+    try {
+        const response = await editSpot(data)
 
-//         setState({
-//             best_time_to_visit: response.best_time_to_visit,
-//             description: response.description,
-//             image_link: response.image_link,
-//             is_oneday_trip: response.is_oneday_trip,
-//             is_visited: response.is_visited,
-//             landscape: response.landscape,
-//             nearest_place: response.nearest_place_ref.nearest_place,
-//             place: response.place,
-//             state_id: response.state_id,
-//             stay_option: response.stay_option
-//         })
-
-//         setSelectedOption({
-//             state: Options.find(item => item.value === response.state_id) ?? { label: '', value: 0 },
-//             landscape: landscapeOptions.find(item => item.value === response.landscape) ?? { label: '', value: '' },
-//             bestTimeToVisit: best_time_to_visit_Options.find(item => item.value === response.best_time_to_visit) ?? { label: '', value: '' }
-//         })
-//     }
-//     catch (error) {
-//         console.log("Error", error)
-//     }
-// }
+        if (response) {
+            setPopup(prev => ({ ...prev, edit: false }))
+            setSelectedOption({
+                category: { label: '', value: '' },
+                timing: { label: '', value: '' },
+                season: { label: '', value: '' },
+            })
+            setState({
+                category: '',
+                description: '',
+                google_location: '',
+                image_link: '',
+                must_visit: false,
+                place_id: placeId,
+                season: '',
+                spot: '',
+                timing: '',
+            })
+            getPlaceDetailsHandler(placeId, setPlace)
+        }
+    }
+    catch (error) {
+        console.log("Error", error)
+    }
+}

@@ -34,3 +34,15 @@ export interface SpotDetails {
     spot: string;
     timing: string;
 }
+
+export interface SpotComponentProps {
+    data: SpotDetails,
+    setPopup: React.Dispatch<React.SetStateAction<SpotPopupState>>,
+    setEditSpotData: React.Dispatch<React.SetStateAction<SpotDetails>>
+
+}
+
+export interface SpotPopupState {
+    add: boolean,
+    edit: boolean,
+}
