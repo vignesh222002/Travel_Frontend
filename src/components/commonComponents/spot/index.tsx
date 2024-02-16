@@ -3,8 +3,9 @@ import React, { useEffect } from 'react'
 import styles from './styles.module.scss'
 import Image from 'next/image'
 import locationImage from '../../../assests/svg/locationIcon.svg'
+import { deleteSpotHandler } from './helper'
 
-const SpotComponent = ({ data, setPopup, setEditSpotData }: SpotComponentProps) => {
+const SpotComponent = ({ data, setPopup, setEditSpotData, setPlace }: SpotComponentProps) => {
 
     return (
         <div className={styles.spotWrapper}>
@@ -42,7 +43,7 @@ const SpotComponent = ({ data, setPopup, setEditSpotData }: SpotComponentProps) 
                         Edit Spot
                     </button>
                     <button
-                        onClick={() => { }}
+                        onClick={() => deleteSpotHandler(data.id, data.place_id, setPlace)}
                     >
                         Delete Spot
                     </button>

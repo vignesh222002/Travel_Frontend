@@ -110,7 +110,7 @@ const PlaceDetailsPageComponent = ({ id }: PlaceDetailsPageComponentProps) => {
                             </div>
                         </div>
                         {place?.spots?.map(item => (
-                            <SpotComponent data={item} key={item.id} setEditSpotData={setEditSpotData} setPopup={setSpotPopup} />
+                            <SpotComponent data={item} key={item.id} setEditSpotData={setEditSpotData} setPopup={setSpotPopup} setPlace={setPlace} />
                         ))}
                     </div>
                 </div>

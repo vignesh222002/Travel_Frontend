@@ -38,8 +38,8 @@ export interface SpotDetails {
 export interface SpotComponentProps {
     data: SpotDetails,
     setPopup: React.Dispatch<React.SetStateAction<SpotPopupState>>,
-    setEditSpotData: React.Dispatch<React.SetStateAction<SpotDetails>>
-
+    setEditSpotData: React.Dispatch<React.SetStateAction<SpotDetails>>,
+    setPlace: React.Dispatch<React.SetStateAction<PlaceDetails>>
 }
 
 export interface SpotPopupState {
