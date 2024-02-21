@@ -1,5 +1,5 @@
-import { SpotComponentProps, SpotDetails } from '@/components/pageComponents/placeDetails/interfaces'
-import React, { useEffect } from 'react'
+import React from 'react'
+import { SpotComponentProps } from '@/components/pageComponents/placeDetails/interfaces'
 import styles from './styles.module.scss'
 import Image from 'next/image'
 import locationImage from '../../../assests/svg/locationIcon.svg'

@@ -1,5 +1,5 @@
-import PlacesPageComponent from '@/components/pageComponents/place'
 import React from 'react'
+import PlacesPageComponent from '@/components/pageComponents/place'
 
 const PlacesPage = () => {
 

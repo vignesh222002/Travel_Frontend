@@ -9,7 +9,7 @@ import landscapeLogo from '../../../assests/svg/beach_holiday_vacations_sun_tree
 import { navigateTo } from '@/utils/router';
 import { useRouter } from 'next/navigation';
 import { deletePlace } from './services';
-import SpotComponent from '@/components/commonComponents/spot';
+import SpotComponent from '@/components/commonComponents/spotCard';
 import AddEditSpot from '@/components/commonComponents/addEditSpotPopup';
 
 const PlaceDetailsPageComponent = ({ id }: PlaceDetailsPageComponentProps) => {
@@ -56,7 +56,7 @@ const PlaceDetailsPageComponent = ({ id }: PlaceDetailsPageComponentProps) => {
 
     return (
         <>
-            <NavBar addPlace addState manageState places />
+            <NavBar addPlace addState manageState places trips />
             {spotPopup.add ? (
                 <AddEditSpot editSpotData={editSpotData} placeId={id} purpose='create' setPopup={setSpotPopup} setPlace={setPlace} />
             ) : spotPopup.edit && (

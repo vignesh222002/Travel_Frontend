@@ -5,7 +5,7 @@ import { NavbarComponentProps } from './interfaces';
 import AddEditStatePopup from '../addStatePopup';
 import { navigateTo } from '@/utils/router';
 
-const NavBar = ({ places, addPlace, manageState, addState }: NavbarComponentProps) => {
+const NavBar = ({ places, addPlace, manageState, addState, trips }: NavbarComponentProps) => {
     const router = useRouter();
     const [addStatePopup, setAddStatePopup] = useState({
         show: false,
@@ -35,6 +35,14 @@ const NavBar = ({ places, addPlace, manageState, addState }: NavbarComponentProp
                             onClick={() => navigateTo(router, '/places')}
                         >
                             Places
+                        </button>
+                    )}
+                    {trips && (
+                        <button
+                            className={styles.navbarActionButton}
+                            onClick={() => navigateTo(router, '/trips')}
+                        >
+                            Trips
                         </button>
                     )}
                     {addState && (

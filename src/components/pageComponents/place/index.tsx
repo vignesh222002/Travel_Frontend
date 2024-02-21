@@ -1,6 +1,5 @@
 "use client"
 import PlacesCardProps from '@/components/commonComponents/placesCard/interfaces';
-import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import { getAllPlacesHandler } from './helper';
 import PlacesCard from '../../commonComponents/placesCard';
@@ -8,7 +7,6 @@ import styles from './styles.module.scss'
 import NavBar from '../../commonComponents/navBar';
 
 const PlacesPageComponent = () => {
-    const router = useRouter();
     const [place, setPlace] = useState<PlacesCardProps[]>([])
 
     useEffect(() => {
@@ -17,7 +15,7 @@ const PlacesPageComponent = () => {
 
     return (
         <>
-            <NavBar addPlace manageState addState/>
+            <NavBar addPlace manageState addState places trips/>
             <div className={styles.placesPageContent}>
                 {(place) && (
                     <div className={styles.placesCardsWrapper}>
