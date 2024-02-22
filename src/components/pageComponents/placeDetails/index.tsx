@@ -81,8 +81,8 @@ const PlaceDetailsPageComponent = ({ id }: PlaceDetailsPageComponentProps) => {
                             >
                                 {place?.is_visited ? 'Already Visited' : 'Not Visited Yet'}
                             </div>
-                            <div className={styles.description}><b>Description : </b>{place?.description}</div>
-                            <div className={styles.stayOption}><b>Stay : </b>{place?.stay_option}</div>
+                            <div className={styles.description}><b>Description : </b><span className={styles.values}>{place?.description}</span></div>
+                            <div className={styles.stayOption}><b>Stay : </b><span className={styles.values}>{place?.stay_option}</span></div>
                         </div>
                     </div>
                     <div className={styles.rightPlaceSpotsWrapper}>

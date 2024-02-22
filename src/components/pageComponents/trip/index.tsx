@@ -43,6 +43,9 @@ const TripsPageComponent = () => {
                                 place_image_link={item.place_image_link}
                                 places={item.places}
                                 tripNumber={index + 1}
+                                amount_spend={item.amount_spend}
+                                members={item.members}
+                                trip_name={item.trip_name}
                             />
                         ))}
                     </div>

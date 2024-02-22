@@ -26,7 +26,7 @@ const NavBar = ({ places, addPlace, manageState, addState, trips }: NavbarCompon
                             className={styles.navbarActionButton}
                             onClick={() => navigateTo(router, '/manage_states')}
                         >
-                            Manage States
+                            States
                         </button>
                     )}
                     {places && (

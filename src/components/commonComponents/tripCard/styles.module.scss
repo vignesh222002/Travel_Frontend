@@ -10,25 +10,76 @@
     .tripDetails {
         width: 70%;
         padding: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
 
-        .tripHeader {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        .tripContent {
 
-            .tripDates {
-                font-weight: bold;
-                font-size: 16px;
-                max-width: 80%;
-                overflow: hidden;
-                text-wrap: nowrap;
-                text-overflow: ellipsis;
+            .tripHeader {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                .tripDates {
+                    font-weight: bold;
+                    font-size: 16px;
+                    max-width: 80%;
+                    overflow: hidden;
+                    text-wrap: nowrap;
+                    text-overflow: ellipsis;
+                    color: green;
+                }
+
+                .tripNumber {
+                    font-weight: bold;
+                    font-size: 16px;
+                    margin: 0 10px 0 0;
+                    color: cornflowerblue;
+                }
             }
 
-            .tripNumber {
+            .tripPlaces {
                 font-weight: bold;
-                font-size: 16px;
-                margin: 0 10px 0 0;
+                font-size: 20px;
+                margin: 15px 0;
+            }
+
+            .description {
+
+                b {
+                    font-size: 15px;
+                    margin: 0 10px 0 0;
+                }
+
+                span {
+                    font-size: 13px;
+                    color: #426890;
+                    font-weight: bold;
+                }
+            }
+        }
+
+
+        .tripActionWrapper {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 15px;
+            margin: 0 10px;
+
+            button {
+                background-color: #2d3e52;
+                color: #fff;
+                outline: none;
+                border: none;
+                padding: 5px 15px;
+                font-weight: bold;
+                cursor: pointer;
+
+                &:hover {
+                    box-shadow: 0 6px 6px 0 rgba(0, 0, 0, .12), 0 1px 3px 0 rgba(0, 0, 0, .18);
+                }
             }
         }
 
