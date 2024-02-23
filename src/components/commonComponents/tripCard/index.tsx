@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from './styles.module.scss'
 import { AllTripData } from '@/components/pageComponents/trip/interfaces'
-import { dateHeadingForTripHeading } from '@/utils/moment'
+import { dateHeadingForTripHeading, stringToDate } from '@/utils/moment'
 import { useRouter } from 'next/navigation'
 
 const TripCard = (
@@ -21,7 +21,7 @@ const TripCard = (
     const [tripDates, setTripDates] = useState<Date[]>([])
 
     useEffect(() => {
-        setTripDates(dates.map(item => new Date(item)))
+        setTripDates(dates.map(item => stringToDate(item)))
     }, [dates])
 
     return (
