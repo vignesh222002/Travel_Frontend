@@ -6,7 +6,7 @@ export const getAllTripsHandler = async (setTripData: React.Dispatch<React.SetSt
         const data: AllTripData[] = await fetchAllTrip()
 
         setTripData({
-            data
+            data: data.reverse()
         })
     }
     catch (error) {

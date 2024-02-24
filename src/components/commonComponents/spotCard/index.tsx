@@ -2,7 +2,7 @@ import React from 'react'
 import { SpotComponentProps } from '@/components/pageComponents/placeDetails/interfaces'
 import styles from './styles.module.scss'
 import Image from 'next/image'
-import locationImage from '../../../assests/svg/locationIcon.svg'
+import locationImage from '@/assests/svg/locationIcon.svg'
 import { deleteSpotHandler } from './helper'
 
 const SpotComponent = ({ data, setPopup, setEditSpotData, setPlace }: SpotComponentProps) => {

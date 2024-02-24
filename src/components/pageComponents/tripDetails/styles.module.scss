@@ -1,6 +1,8 @@
+@import '../../../app/variables.scss';
+
 .tripDetailPageWrapper {
     padding: 50px 80px;
-    background-color: #f5f5f5;
+    background-color: $background_primary;
     min-height: 80vh;
 
     .tripDetailWrapper {
@@ -13,7 +15,7 @@
         .leftTripDetailWrapper {
             width: 25%;
             padding: 20px;
-            background-color: #fff;
+            background-color: $white;
             color: #2d3e52;
             height: fit-content;
 
@@ -31,7 +33,7 @@
 
                 span {
                     font-size: 15px;
-                    color: #426890;
+                    color: $secondary;
                 }
             }
 
@@ -53,7 +55,7 @@
 
                 span {
                     font-weight: bold;
-                    color: #426890;
+                    color: $secondary;
                 }
             }
 
@@ -82,19 +84,56 @@
             width: 75%;
             padding: 20px;
             align-self: stretch;
-            background-color: #fff;
+            background-color: $white;
 
             .daysWrapper {
-                margin: 20px 0;
-                color: #2d3e52;
-                background-color: #f5f5f5;
-                box-shadow: 0 6px 6px 0 rgba(0, 0, 0, .12), 0 1px 3px 0 rgba(0, 0, 0, .18);
-                padding: 10px 15px;
+
+                .accordion__item {
+                    margin: 0 0 20px 0;
+                    box-shadow: $shadow;
+
+                    .accordion__button {
+                        color: $background_primary;
+                        background-color: $primary;
+                        width: auto;
+                        padding: 10px 10px;
+
+                        &::before {
+                            display: none;
+                        }
+                    }
+
+                    .accordion__panel {
+                        padding: 0 0 1px 0;
+                    }
+                }
 
                 .dayHeadWrapper {
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
+
+
+                    .days,
+                    .date {
+                        font-weight: bold;
+                    }
+                }
+
+                .places {
+
+                    .placeHeadWrapper {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        color: $white;
+                        background-color: $secondary;
+                        padding: 5px;
+
+                        .placeName, .placeCount {
+                            font-weight: bold;
+                        }
+                    }
                 }
             }
         }

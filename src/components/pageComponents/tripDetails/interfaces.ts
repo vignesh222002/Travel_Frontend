@@ -15,20 +15,22 @@ export interface TripDetails {
     }[];
     trip_data: {
         [key: string]: {
-            [key: string]: {
-                date: string;
-                order: number;
-                description: string;
-                place: string;
-                spot: {
-                    id: number;
-                    spot: string;
-                    category: string;
-                    image_link: string;
-                    google_location: string;
-                    must_visit: boolean;
-                };
-            }[];
+            [key: string]: TripSpotData[];
         }
+    };
+}
+
+export interface TripSpotData {
+    date: string;
+    order: number;
+    description: string;
+    place: string;
+    spot: {
+        id: number;
+        spot: string;
+        category: string;
+        image_link: string;
+        google_location: string;
+        must_visit: boolean;
     };
 }
