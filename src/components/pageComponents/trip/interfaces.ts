@@ -1,5 +1,12 @@
 export interface AllTripApiData {
-    data: AllTripData[]
+    trip_data: AllTripData[];
+    total_trips: number;
+    total_amount_spent: number;
+    total_days_spent: number;
+    total_places_visited: number;
+    places_visited: string[];
+    total_oneday_trips: number;
+    total_multiday_trips: number;
 }
 
 export interface AllTripData {

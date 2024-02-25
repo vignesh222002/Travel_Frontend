@@ -1,13 +1,13 @@
-import { AllTripApiData, AllTripData } from "./interfaces"
+import { AllTripApiData } from "./interfaces"
 import { fetchAllTrip } from "./services"
 
 export const getAllTripsHandler = async (setTripData: React.Dispatch<React.SetStateAction<AllTripApiData>>) => {
     try {
-        const data: AllTripData[] = await fetchAllTrip()
+        const data: AllTripApiData = await fetchAllTrip()
 
-        setTripData({
-            data: data.reverse()
-        })
+        data.trip_data.reverse();
+
+        setTripData(data)
     }
     catch (error) {
         console.log("Error", error)

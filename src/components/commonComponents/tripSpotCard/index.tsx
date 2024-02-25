@@ -4,13 +4,6 @@ import styles from './styles.module.scss'
 import Image from 'next/image'
 import locationImage from '@/assests/svg/locationIcon.svg'
 
-const mock = {
-    "date": "19/02/2024",
-    "description": "First Day Starts in Ooty Testing",
-    "place": "Ooty",
-}
-
-
 const TripSpotCard = ({ data }: { data: TripSpotData }) => {
     return (
         <div className={styles.tripSpotCardWrapper}>
