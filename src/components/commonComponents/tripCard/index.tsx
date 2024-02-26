@@ -49,7 +49,7 @@ const TripCard = (
                         View Trip
                     </button>
                     <button
-                        onClick={() => { }}
+                        onClick={() => router.push(`/trips/${id}/edit`)}
                     >
                         Edit Trip
                     </button>

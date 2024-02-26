@@ -1,5 +1,5 @@
 import fetch from "@/utils/api"
-import { CreateEditTripData } from "./interfaces"
+import { CreateEditTripData, getTripByIdEditData } from "./interfaces"
 
 export const fetchSpotsByPlace = async (place_id: number) => {
     try {
@@ -15,11 +15,26 @@ export const fetchSpotsByPlace = async (place_id: number) => {
     }
 }
 
-export const createEditTripData = async (body: CreateEditTripData) => {
+export const createTripData = async (body: CreateEditTripData) => {
     try {
         const response = await fetch({
             endPoint: `trip/create`,
             method: 'POST',
+            body
+        })
+
+        return response?.data?.data
+    }
+    catch (error) {
+        console.log("Error", error)
+    }
+}
+
+export const editTripData = async (body: getTripByIdEditData) => {
+    try {
+        const response = await fetch({
+            endPoint: `trip/update/${body.id}`,
+            method: 'PUT',
             body
         })
 
