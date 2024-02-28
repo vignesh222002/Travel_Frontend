@@ -88,7 +88,9 @@ export const populateEditTripData = async (
     }
     // Remove Existing Spot
     else if (removeSpot != null && removeSpot >= 0 && removeSpot < data?.data?.length) {
-        data?.data?.splice(removeSpot, 1)
+        const deletedSpot = data?.data?.splice(removeSpot, 1)
+        // if (deletedSpot[0].id) setEditTripData(prev => ({ ...prev, delete_trip_spots: [...prev.delete_trip_spots, deletedSpot[0].id] }))
+        if (deletedSpot[0].id) data.delete_trip_spots.push(deletedSpot[0].id)
     }
     // Update Values
     else {
@@ -131,6 +133,7 @@ export const fetchTripDataForEdit = async (id: number, setEditTripData: React.Di
         members: response.members,
         new_places_visited: [],
         old_places_visited: response.old_places,
+        delete_trip_spots: [],
         data: response.data
     })
 }

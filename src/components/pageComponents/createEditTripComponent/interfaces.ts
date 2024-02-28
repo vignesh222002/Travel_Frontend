@@ -47,6 +47,7 @@ export interface getTripByIdEditData {
     trip_name: string;
     new_places_visited: places_visited[];
     old_places_visited: places_visited[];
+    delete_trip_spots: number[],
     data: editTripSpotData[]
 }
 

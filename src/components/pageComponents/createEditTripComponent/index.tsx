@@ -32,6 +32,7 @@ const CreateTripPageComponent = ({ purpose, id }: CreateTripPageComponentProps) 
         members: '',
         new_places_visited: [],
         old_places_visited: [],
+        delete_trip_spots: [],
         data: [],
     })
     const [editPlaceCountDetails, setEditPlaceCountDetails] = useState<PlaceCountDetails[]>([])

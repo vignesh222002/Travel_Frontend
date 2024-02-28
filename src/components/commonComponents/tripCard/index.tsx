@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import styles from './styles.module.scss'
-import { AllTripData } from '@/components/pageComponents/trip/interfaces'
+import { AllTripApiData, AllTripData } from '@/components/pageComponents/trip/interfaces'
 import { dateHeadingForTripHeading, stringToDate } from '@/utils/moment'
 import { useRouter } from 'next/navigation'
+import { deleteTripHandler } from '@/components/pageComponents/trip/helper'
 
 const TripCard = (
     {
@@ -14,8 +15,10 @@ const TripCard = (
         amount_spend,
         members,
         trip_name,
-        tripNumber
-    }: AllTripData & { tripNumber: number }
+        places_visited,
+        tripNumber,
+        setTripData,
+    }: AllTripData & { tripNumber: number, setTripData: React.Dispatch<React.SetStateAction<AllTripApiData>> }
 ) => {
     const router = useRouter()
     const [tripDates, setTripDates] = useState<Date[]>([])
@@ -54,7 +57,7 @@ const TripCard = (
                         Edit Trip
                     </button>
                     <button
-                        onClick={() => { }}
+                        onClick={() => deleteTripHandler(id, places_visited, setTripData)}
                     >
                         Delete Trip
                     </button>

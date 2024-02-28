@@ -17,5 +17,11 @@ export interface AllTripData {
     trip_name: string;
     dates: string[],
     places: string[],
+    places_visited: PlacesVisited[],
     place_image_link: string
+}
+
+export interface PlacesVisited {
+    place_id: number;
+    count: number;
 }

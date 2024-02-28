@@ -19,7 +19,8 @@ const TripsPageComponent = () => {
                 members: '',
                 place_image_link: '',
                 places: [],
-                trip_name: ''
+                trip_name: '',
+                places_visited: [],
             }
         ],
         places_visited: [],
@@ -90,6 +91,8 @@ const TripsPageComponent = () => {
                                 amount_spend={item.amount_spend}
                                 members={item.members}
                                 trip_name={item.trip_name}
+                                places_visited={item.places_visited}
+                                setTripData={setTripData}
                             />
                         ))}
                     </div>
