@@ -105,14 +105,6 @@ export const populateEditTripData = async (
 
     // Populate Order
     data.data = data?.data?.map((item: editTripSpotData, index: number) => {
-        // Refer all the place_id and push it to the places_visited
-        if (!data.new_places_visited.find((place_id: places_visited) => item.place_id === place_id.place_id) && item.place_id) {
-            data.new_places_visited.push({
-                count: editPlaceCountDetails.find(place => place.place_id === item.place_id)?.count ?? 0,
-                place_id: item.place_id
-            })
-        }
-
         return {
             ...item,
             order: index,
@@ -215,8 +207,22 @@ export const createEditTripDataHandler = async (data: CreateEditTripData, router
     }
 }
 
-export const editTripDataHandler = async (data: getTripByIdEditData, router: AppRouterInstance) => {
+export const editTripDataHandler = async (
+    data: getTripByIdEditData,
+    editPlaceCountDetails: PlaceCountDetails[],
+    router: AppRouterInstance
+) => {
     try {
+        data?.data?.map((item: editTripSpotData, index: number) => {
+            // Refer all the place_id and push it to the places_visited
+            data.new_places_visited.push({
+                count: editPlaceCountDetails.find(place => place.place_id === item.place_id)?.count ?? 0,
+                place_id: item.place_id
+            })
+        })
+        
+        console.log("Places Visited", data.old_places_visited, data.new_places_visited);
+
         const response = await editTripData(data)
 
         if (response) {

@@ -354,7 +354,7 @@ const CreateTripPageComponent = ({ purpose, id }: CreateTripPageComponentProps) 
                         className={styles.submitAction}
                         onClick={() => {
                             if (purpose === 'create') createEditTripDataHandler(tripData, router)
-                            else if (purpose === 'edit') editTripDataHandler(editTripData, router)
+                            else if (purpose === 'edit') editTripDataHandler(editTripData, editPlaceCountDetails, router)
                         }}
                     >
                         {purpose === 'create' ? 'Create' : 'Edit'}
